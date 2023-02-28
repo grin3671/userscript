@@ -10,14 +10,14 @@
 // ==/UserScript==
 
 (function() {
-  'use strict';
+  "use strict";
 
   // CHECK PAGE
-  let currentURL = location.pathname.substring(1).split('/');
+  let currentURL = location.pathname.substring(1).split("/");
   let params = new URLSearchParams(location.search);
   switch (currentURL[0]) {
-    case 'panel.php':
-      if (params.get('go') == 'characters' && params.get('do') == 'add') {
+    case "panel.php":
+      if (params.get("go") == "characters" && params.get("do") == "add") {
         changeCharacterAddForm();
       }
       break;
@@ -32,7 +32,7 @@
     // get fieldsNames
     // get specialElements
     // create new Form
-    let formElement = document.getElementById('myCharForm');
+    let formElement = document.getElementById("myCharForm");
     createNewFields().then((fields) => {
       fields.forEach(e => {
         formElement.append(e);
@@ -43,7 +43,7 @@
     // SIDEBAR
     createSidebarElements(["charguide", "suggestions"]).then((nodes) => {
       let sidebar = formElement.appendChild(
-        createElement("aside", null, e => {
+        createElement("aside", e => {
           e.className = "mcf-sidebar";
         })
       );
@@ -62,8 +62,8 @@
         let formData = new FormData(form);
 
         for(var pair of formData.entries()) {
-          console.log(pair[0]+ ', '+ pair[1]);
-          if (!pair[0].includes('[]')) {
+          console.log(pair[0] + ", " + pair[1]);
+          if (!pair[0].includes("[]")) {
             formObject[pair[0]] = pair[1];
           }
         };
@@ -74,26 +74,26 @@
       let fields = [];
 
       // 2-3. character first-last name
-      createElement("div", null, (e) => {
+      createElement("div", e => {
         e.className = "b-block mcf-name mcf-name-rmj";
         e.append(
-          createElement("h6", null, (e) => {
+          createElement("h6", e => {
             e.className = "h6";
             e.textContent = "Character Name";
           }),
 
           // 2. character first name
-          createElement("div", null, (e) => {
+          createElement("div", e => {
             e.className = "b-block";
             e.append(
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.className = "b-form-group";
                 e.append(
-                  createElement("span", null, (e) => {
+                  createElement("span", e => {
                     e.className = "b-form-group__text";
                     e.textContent = "First";
                   }),
-                  createElement("input", null, (e) => {
+                  createElement("input", e => {
                     e.className = "b-input";
                     e.type = "text";
                     e.id = "fname";
@@ -101,7 +101,7 @@
                   }),
                 );
               }),
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.className = "b-form__text";
                 e.textContent = "Ex. Naruto";
               }),
@@ -109,17 +109,17 @@
           }),
 
           // 3. character last name
-          createElement("div", null, (e) => {
+          createElement("div", e => {
             e.className = "b-block";
             e.append(
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.className = "b-form-group";
                 e.append(
-                  createElement("span", null, (e) => {
+                  createElement("span", e => {
                     e.className = "b-form-group__text";
                     e.textContent = "Last";
                   }),
-                  createElement("input", null, (e) => {
+                  createElement("input", e => {
                     e.className = "b-input";
                     e.type = "text";
                     e.id = "lname";
@@ -127,7 +127,7 @@
                   }),
                 );
               }),
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.className = "b-form__text";
                 e.textContent = "Ex. Uzumaki";
               }),
@@ -138,20 +138,20 @@
       });
 
       // 4. character japanese name
-      createElement("div", null, (e) => {
+      createElement("div", e => {
         e.className = "b-block mcf-name mcf-name-jpn";
         e.append(
-          createElement("h6", null, (e) => {
+          createElement("h6", e => {
             e.className = "h6";
             e.textContent = "Japanese Name";
           }),
-          createElement("div", null, (e) => {
+          createElement("div", e => {
             e.className = "b-block";
             e.append(
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.className = "b-form-group";
                 e.append(
-                  createElement("input", null, (e) => {
+                  createElement("input", e => {
                     e.className = "b-input";
                     e.type = "text";
                     e.id = "jname"; // for css purposes
@@ -159,7 +159,7 @@
                   }),
                 );
               }),
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.className = "b-form__text";
                 e.textContent = "Name in kanji";
               }),
@@ -170,27 +170,27 @@
       });
 
       // 5. character alternate name
-      createElement("div", null, (e) => {
+      createElement("div", e => {
         e.className = "b-block mcf-name mcf-name-alt";
         e.append(
-          createElement("h6", null, (e) => {
+          createElement("h6", e => {
             e.className = "h6";
             e.textContent = "Alternate Name";
           }),
-          createElement("div", null, (e) => {
+          createElement("div", e => {
             e.className = "b-block";
             e.append(
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.className = "b-form-group";
                 e.append(
-                  createElement("input", null, (e) => {
+                  createElement("input", e => {
                     e.className = "b-input";
                     e.type = "text";
                     e.name = "character_alt_name";
                   }),
                 );
               }),
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.className = "b-form__text";
                 e.textContent = "Nickname";
               }),
@@ -201,36 +201,36 @@
       });
 
       // 7. character bio info
-      createElement("div", null, (e) => {
+      createElement("div", e => {
         e.className = "b-block mcf-bioinfo";
         e.append(
-          createElement("h6", null, (e) => {
+          createElement("h6", e => {
             e.className = "h6";
             e.textContent = "Biography";
           }),
-          createElement("div", null, (e) => {
+          createElement("div", e => {
             e.className = "b-block";
             e.append(
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.className = "b-form-group";
                 e.append(
-                  createElement("textarea", null, (e) => {
+                  createElement("textarea", e => {
                     e.className = "b-input";
                     e.name = "character_bio";
                   }),
                 );
               }),
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.className = "b-form__text";
                 e.textContent = "Information and details about the character. Cite your source! BBCode enabled. ";
                 e.append(
-                  createElement("a", null, (e) => {
+                  createElement("a", e => {
                     e.textContent = "BBCode Help";
                     e.href = "javascript:void(0);";
                     e.setAttribute("onclick", "window.open(\"info.php?go=bbcode\",\"bbcode\",\"menubar=no,scrollbars=yes,status=no,width=600,height=700\");");
                   })
                 );
-                e.innerHTML += '.';
+                e.innerHTML += ".";
               }),
             );
           }),
@@ -239,50 +239,50 @@
       });
 
       // 8. character picture source
-      createElement("div", null, (e) => {
+      createElement("div", e => {
         e.className = "b-block mcf-picture";
         e.append(
-          createElement("h6", null, (e) => {
+          createElement("h6", e => {
             e.className = "h6";
             e.textContent = "Picture";
           }),
-          createElement("div", null, (e) => {
+          createElement("div", e => {
             e.className = "b-block";
             e.append(
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.className = "b-form-group";
                 e.append(
-                  createElement("input", null, (e) => {
+                  createElement("input", e => {
                     e.className = "b-input";
                     e.type = "file";
                     e.name = "file";
                   }),
                 );
               }),
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.className = "b-form__text";
                 e.textContent = "No avatars. No ";
                 e.append(
-                  createElement("a", null, (e) => {
+                  createElement("a", e => {
                     e.textContent = "NSFM";
                     e.href = "/forum/?topicid=516059#post2";
                   })
                 );
-                e.innerHTML += '.';
+                e.innerHTML += ".";
               }),
             );
           }),
-          createElement("div", null, (e) => {
+          createElement("div", e => {
             e.className = "b-block";
             e.append(
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.className = "b-form-group";
                 e.append(
-                  createElement("span", null, (e) => {
+                  createElement("span", e => {
                     e.className = "b-form-group__text";
                     e.textContent = "Source";
                   }),
-                  createElement("input", null, (e) => {
+                  createElement("input", e => {
                     e.className = "b-input";
                     e.type = "text";
                     e.name = "pic_source";
@@ -297,57 +297,57 @@
       });
 
       // 6.1. character anime relations
-      createElement("div", null, (e) => {
+      createElement("div", e => {
         e.className = "b-block mcf-relations mcf-relations-anime";
         e.append(
-          createElement("h6", null, (e) => {
+          createElement("h6", e => {
             e.className = "h6";
             e.textContent = "Anime Relations";
             e.prepend(
-              createElement("i", null, (e) => {
+              createElement("i", e => {
                 e.className = "fa-solid fa-tv-alt";
               }),
             );
           }),
-          createElement("div", null, (e) => {
+          createElement("div", e => {
             e.id = "relationArea";
           }),
-          createElement("div", null, (e) => {
+          createElement("div", e => {
             e.className = "b-block";
             e.append(
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.className = "b-form-group";
                 e.append(
-                  createElement("input", null, (e) => {
+                  createElement("input", e => {
                     e.id = "queryTitle";
                     e.className = "b-input";
                     e.type = "text";
                   }),
-                  createElement("button", null, (e) => {
+                  createElement("button", e => {
                     e.className = "b-button b-button--outline";
                     e.type = "button";
                     e.textContent = "Search";
                     e.onclick = (event) => {
-                      document.getElementById('searchResults').parentNode.classList.remove('b-block--hidden');
+                      document.getElementById("searchResults").parentNode.classList.remove("b-block--hidden");
                       window.searchAnimeTitles();
                     };
                   }),
                 );
               }),
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.className = "b-form__text";
                 e.textContent = "Search for an anime title to add for the character.";
               }),
             );
           }),
-          createElement("div", null, (e) => {
+          createElement("div", e => {
             e.className = "b-block b-block--hidden js-search-result";
             e.append(
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.id = "searchResults";
                 e.className = "b-block";
               }),
-              createElement("button", null, (e) => {
+              createElement("button", e => {
                 e.className = "b-button b-button--outline";
                 e.type = "button";
                 e.textContent = "Hide results";
@@ -359,57 +359,57 @@
       });
 
       // 6.2. character manga relations
-      createElement("div", null, (e) => {
+      createElement("div", e => {
         e.className = "b-block mcf-relations mcf-relations-manga";
         e.append(
-          createElement("h6", null, (e) => {
+          createElement("h6", e => {
             e.className = "h6";
             e.textContent = "Manga Relations";
             e.prepend(
-              createElement("i", null, (e) => {
+              createElement("i", e => {
                 e.className = "fa-solid fa-books";
               }),
             );
           }),
-          createElement("div", null, (e) => {
+          createElement("div", e => {
             e.id = "mangarelationArea";
           }),
-          createElement("div", null, (e) => {
+          createElement("div", e => {
             e.className = "b-block";
             e.append(
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.className = "b-form-group";
                 e.append(
-                  createElement("input", null, (e) => {
+                  createElement("input", e => {
                     e.id = "mangaqueryTitle";
                     e.className = "b-input";
                     e.type = "text";
                   }),
-                  createElement("button", null, (e) => {
+                  createElement("button", e => {
                     e.className = "b-button b-button--outline";
                     e.type = "button";
                     e.textContent = "Search";
                     e.onclick = (event) => {
-                      document.getElementById('mangasearchResults').parentNode.classList.remove('b-block--hidden');
+                      document.getElementById("mangasearchResults").parentNode.classList.remove("b-block--hidden");
                       window.searchMangaTitles();
                     };
                   }),
                 );
               }),
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.className = "b-form__text";
                 e.textContent = "Search for a manga title to add for the character.";
               }),
             );
           }),
-          createElement("div", null, (e) => {
+          createElement("div", e => {
             e.className = "b-block b-block--hidden js-search-result";
             e.append(
-              createElement("div", null, (e) => {
+              createElement("div", e => {
                 e.id = "mangasearchResults";
                 e.className = "b-block";
               }),
-              createElement("button", null, (e) => {
+              createElement("button", e => {
                 e.className = "b-button b-button--outline";
                 e.type = "button";
                 e.textContent = "Hide results";
@@ -428,17 +428,17 @@
       elements.forEach((element, index) => {
         switch(element) {
           case "charguide":
-            createElement("div", null, (e) => {
+            createElement("div", e => {
               e.className = "b-block mcf-guideline";
               e.append(
-                createElement("div", null, (e) => {
+                createElement("div", e => {
                   e.className = "b-action b-action--info";
                   e.append(
-                    createElement("span", null, (e) => {
+                    createElement("span", e => {
                       e.className = "b-action_message";
                       e.textContent = "Read Character DB Guidelines";
                     }),
-                    createElement("a", null, (e) => {
+                    createElement("a", e => {
                       e.className = "b-button";
                       e.href = "/forum/?topicid=141103";
                       e.target = "_blank";
@@ -451,17 +451,17 @@
             });
             break;
           case "suggestions":
-            createElement("div", null, (e) => {
+            createElement("div", e => {
               e.className = "b-block mcf-suggestions";
               e.append(
-                createElement("h6", null, (e) => {
+                createElement("h6", e => {
                   e.className = "h6";
                   e.textContent = "Suggestions"
                 }),
-                createElement("div", null, (e) => {
+                createElement("div", e => {
                   e.className = "b-action b-action";
                   e.append(
-                    createElement("span", null, (e) => {
+                    createElement("span", e => {
                       e.className = "b-action_message";
                       e.textContent = "Fill \"First Name\" field.";
                     }),
@@ -973,28 +973,15 @@
   }
 
   // HELP: CREATE ELEMENTS
-  function createElement (type, data, callback) {
+  function createElement (type, callback) {
     let e = document.createElement(type);
-
-    if (data && data.id) e.id = data.id;
-    if (data && data.class) e.className = data.class;
-    if (data && data.value) e.value = data.value;
-    if (data && data.type) e.type = data.type;
-    if (data && data.name) e.name = data.name;
-    if (data && data.placeholder) e.placeholder = data.placeholder;
-    if (data && data.onclick) e.setAttribute('onclick', data.onclick);
-    if (data && data.href) e.href = data.href;
-    if (data && data.text) e.textContent = data.text;
-    if (data && data.html) e.innerHTML = data.html;
-
-    if (typeof callback === 'function') callback(e);
-
+    if (typeof callback === "function") callback.call(e, e);
     return e;
   }
 
   // HELP: ADD STYLES
   function insertStyles(styles) {
-    let style = document.createElement('style');
+    let style = document.createElement("style");
     style.innerHTML = styles;
     document.head.appendChild(style);
   }
