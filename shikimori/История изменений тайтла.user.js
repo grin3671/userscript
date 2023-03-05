@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         История изменений тайтла
 // @namespace    http://tampermonkey.net/
-// @version      1.4
+// @version      1.5
 // @description  Просмотр истории действий с отдельным тайтлом.
 // @author       grin3671
 // @license      MIT
@@ -38,14 +38,12 @@
   }
 
   /**
-   * Gets User's ID
-   * @return (string) User ID
-   * @return (boolean) false if User ID can't be found
+   * Gets User Data
+   * @property param (string) requested Property
+   * @return (string) Property from User Data
+   * @return (boolean) false if Property not found
    */
-  function getUserID () {
-    let data = JSON.parse(document.body.getAttribute("data-user"));
-    return data.id || false;
-  }
+  const getUserData = (param) => param ? JSON.parse(document.body.getAttribute("data-user"))[param] || false : false;
 
   /**
    * Gets Title's ID
@@ -134,7 +132,7 @@
     block.innerHTML = "";
 
     // get user & title data
-    let user_id = getUserID();
+    let user_id = getUserData("id");
     let title_id = getTitleID();
     let title_type = getTitleType();
 
@@ -200,10 +198,20 @@
     history.forEach((entry, index) => {
       let row = createElement("tr", { "class": "b_history-row" }, (e) => {
         e.append(
-          createElement("td", { "text": (index + 1).toString() }),
+          createElement("td", { "text": (index + 1).toString() }, e => { e.style.width = "5%" }),
           createElement("td", null, e => { e.innerHTML = entry.description }),
-          createElement("td", { "text": new Intl.DateTimeFormat([], { dateStyle: "long", timeStyle: "medium"}).format(Date.parse(entry.created_at)) }),
-          createElement("td", { "text": "id: " + entry.id })
+          createElement("td", { "text": new Intl.DateTimeFormat([], { dateStyle: "long", timeStyle: "medium"}).format(Date.parse(entry.created_at)) }, e => { e.style.width = "35%" }),
+          createElement("td", null, e => {
+            e.style.width = "10%";
+            e.append(
+              createElement("a", null, e => {
+                e.textContent = "Удалить";
+                e.href = getUserData("url") + "/history/" + entry.id;
+                e.dataset.confirm = "Это действие необратимо. Точно?";
+                e.dataset.method = "delete";
+              })
+            )
+          })
         )
       });
       historyBlocks.push(row);
