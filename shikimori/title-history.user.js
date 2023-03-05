@@ -8,6 +8,8 @@
 // @match        https://shikimori.one/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=shikimori.one
 // @grant        none
+// @updateURL    https://github.com/grin3671/userscript/raw/main/shikimori/title-history.user.js
+// @downloadURL  https://github.com/grin3671/userscript/raw/main/shikimori/title-history.user.js
 // ==/UserScript==
 
 (function() {
