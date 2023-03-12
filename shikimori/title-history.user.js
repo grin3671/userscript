@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         История изменений тайтла
 // @namespace    http://tampermonkey.net/
-// @version      1.5
+// @version      1.6
 // @description  Просмотр истории действий с отдельным тайтлом.
 // @author       grin3671
 // @license      MIT
@@ -211,6 +211,8 @@
                 e.href = getUserData("url") + "/history/" + entry.id;
                 e.dataset.confirm = "Это действие необратимо. Точно?";
                 e.dataset.method = "delete";
+                e.dataset.remote = true;
+                window.$(e).on("ajax:success", (e) => e.currentTarget.parentNode.parentNode.remove() );
               })
             )
           })
