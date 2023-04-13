@@ -6,6 +6,8 @@
 // @author       grin3671
 // @license      MIT
 // @match        https://shikimori.one/*
+// @match        https://shikimori.org/*
+// @match        https://shikimori.me/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=shikimori.one
 // @grant        none
 // ==/UserScript==
