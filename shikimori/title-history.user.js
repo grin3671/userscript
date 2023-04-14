@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         История изменений тайтла
 // @namespace    http://tampermonkey.net/
-// @version      1.6
+// @version      1.7
 // @description  Просмотр истории действий с отдельным тайтлом.
 // @author       grin3671
 // @license      MIT
