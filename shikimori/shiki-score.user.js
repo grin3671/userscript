@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Рейтинг Шики
 // @namespace    http://tampermonkey.net/
-// @version      1.6
+// @version      1.7
 // @description  Добавляет среднюю оценку пользователей Шикимори на страницы тайтлов и личную среднюю оценку на страницы списков.
 // @author       grin3671
 // @license      MIT
