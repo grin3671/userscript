@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         История изменений тайтла
 // @namespace    http://tampermonkey.net/
-// @version      1.7
+// @version      1.8
 // @description  Просмотр истории действий с отдельным тайтлом.
 // @author       grin3671
 // @license      MIT
@@ -188,7 +188,7 @@
   }
 
   async function requestHistory (user_id, title_id, title_type, page) {
-    return await fetch("https://shikimori.one/api/users/" + user_id + "/history?target_id=" + title_id + "&target_type=" + title_type + "&limit=100&page=" + page);
+    return await fetch("https://shikimori.me/api/users/" + user_id + "/history?target_id=" + title_id + "&target_type=" + title_type + "&limit=100&page=" + page);
   }
 
   /**
