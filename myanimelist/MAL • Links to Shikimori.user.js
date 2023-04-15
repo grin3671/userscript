@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MAL • Links to Shikimori
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Provide links to Shikimori mirror pages.
 // @author       grin3671
 // @match        https://myanimelist.net/*
@@ -22,7 +22,7 @@
     i.className = 'fa-solid fa-external-link-square mr4';
     a.append(i, 'Shikimori');
     a.style.marginLeft = '10px';
-    a.href = 'https://shikimori.one/' + shikimoriCategories[index] + '/' + href[1] + '?utm_source=mal_external';
+    a.href = 'https://shikimori.me/' + shikimoriCategories[index] + '/' + href[1] + '?utm_source=mal_external';
     return a;
   };
 
