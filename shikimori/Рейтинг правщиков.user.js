@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         Рейтинг правщиков
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Добавляет возможность запоминать плюсы/минусы по правкам пользователей.
 // @author       grin3671
 // @license      MIT
 // @match        https://shikimori.one/*
 // @match        https://shikimori.org/*
 // @match        https://shikimori.me/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=shikimori.one
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=shikimori.me
 // @grant        none
 // ==/UserScript==
 

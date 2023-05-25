@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         История изменений тайтла
 // @namespace    http://tampermonkey.net/
-// @version      1.8
+// @version      1.9
 // @description  Просмотр истории действий с отдельным тайтлом.
 // @author       grin3671
 // @license      MIT
 // @match        https://shikimori.one/*
 // @match        https://shikimori.org/*
 // @match        https://shikimori.me/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=shikimori.one
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=shikimori.me
 // @grant        none
 // @updateURL    https://github.com/grin3671/userscript/raw/main/shikimori/title-history.user.js
 // @downloadURL  https://github.com/grin3671/userscript/raw/main/shikimori/title-history.user.js

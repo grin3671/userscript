@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         MAL • Links to Shikimori
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  Provide links to Shikimori mirror pages.
 // @author       grin3671
 // @match        https://myanimelist.net/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=shikimori.one
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=shikimori.me
 // @grant        none
 // ==/UserScript==
 

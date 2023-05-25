@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         Рейтинг Шики
 // @namespace    http://tampermonkey.net/
-// @version      1.7
+// @version      1.8
 // @description  Добавляет среднюю оценку пользователей Шикимори на страницы тайтлов и личную среднюю оценку на страницы списков.
 // @author       grin3671
 // @license      MIT
 // @match        https://shikimori.one/*
 // @match        https://shikimori.org/*
 // @match        https://shikimori.me/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=shikimori.one
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=shikimori.me
 // @grant        none
 // @updateURL    https://github.com/grin3671/userscript/raw/main/shikimori/shiki-score.user.js
 // @downloadURL  https://github.com/grin3671/userscript/raw/main/shikimori/shiki-score.user.js
