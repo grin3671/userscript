@@ -1,12 +1,14 @@
 // ==UserScript==
 // @name         MAL • Links to Shikimori
-// @namespace    http://tampermonkey.net/
-// @version      1.2
+// @namespace    https://github.com/grin3671/userscript/
+// @version      1.3
 // @description  Provide links to Shikimori mirror pages.
 // @author       grin3671
 // @match        https://myanimelist.net/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=shikimori.me
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=shikimori.one
 // @grant        none
+// @updateURL    https://github.com/grin3671/userscript/raw/main/myanimelist/MAL%20%E2%80%A2%20Links%20to%20Shikimori.user.js
+// @downloadURL  https://github.com/grin3671/userscript/raw/main/myanimelist/MAL%20%E2%80%A2%20Links%20to%20Shikimori.user.js
 // ==/UserScript==
 
 (function() {
@@ -22,7 +24,7 @@
     i.className = 'fa-solid fa-external-link-square mr4';
     a.append(i, 'Shikimori');
     a.style.marginLeft = '10px';
-    a.href = 'https://shikimori.me/' + shikimoriCategories[index] + '/' + href[1] + '?utm_source=mal_external';
+    a.href = 'https://shikimori.one/' + shikimoriCategories[index] + '/' + href[1] + '?utm_source=mal_external';
     return a;
   };
 
