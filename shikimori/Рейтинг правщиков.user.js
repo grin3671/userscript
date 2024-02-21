@@ -6,14 +6,15 @@
 // @author       grin3671
 // @license      MIT
 // @match        https://shikimori.one/*
-// @match        https://shikimori.org/*
-// @match        https://shikimori.me/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=shikimori.me
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=shikimori.one
 // @grant        none
 // ==/UserScript==
 
 (function() {
   'use strict';
+
+  // Accessing local jQuery
+  const $ = window.$;
 
   // Prepare localStorage
   const scoreStorage = {
@@ -28,11 +29,13 @@
     if (currentURL[0] == 'moderations' && currentURL[1] == 'versions') {
       updateControls();
       addStyles();
+      $(".l-page").on("postloader:success", updateControls);
     }
     // Launch on entries edit pages
     if (currentURL[currentURL.length - 2] == 'edit') {
       updateControls();
       addStyles();
+      $(".l-page").on("postloader:success", updateControls);
     }
   }
 
