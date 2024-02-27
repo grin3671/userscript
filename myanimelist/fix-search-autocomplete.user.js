@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         [FIX] Search Autocomplete
+// @name         [REMOVE IT] Search Autocomplete
 // @namespace    https://myanimelist.net/
-// @version      1.0
+// @version      1.1
 // @description  Fixes annoying Chrome bug with autocomplete username in search field.
 // @author       grin3671
 // @match        https://myanimelist.net/*
@@ -13,10 +13,6 @@
 
 (function() {
   "use strict";
-  let searchBar = document.getElementById("topSearchText");
-  searchBar.name = "search";
-  searchBar.value = "1";
-  setTimeout(() => {
-    searchBar.value = "";
-  }, 500);
+  
+  // This issue has been fixed by MAL devs.
 })();
