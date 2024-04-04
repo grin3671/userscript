@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         [MAL] New DB Form for Characters
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Changes DB Add Character Form to modern looking
 // @author       grin3671
 // @license      MIT
@@ -262,6 +262,11 @@ function changeCharacterAddFormV2 () {
           switch (mutation.type) {
             case "childList":
               for (let item of mutation.addedNodes) {
+                if (!item.tagName) {
+                  // if No similarly named characters were found
+                  this.observerChangeHandler();
+                  break;
+                }
                 if (item.tagName.toUpperCase() === "TABLE") {
                   this.observerChangeHandler();
                   break;
@@ -288,7 +293,7 @@ function changeCharacterAddFormV2 () {
       },
     },
     mounted() {
-      // add Observer to search area
+      // add Observer to duplicates area
       let searchObserver = addObserver(document.getElementById("dupeResults"), { childList: true }, this.observerFunc);
     },
     template: `<div class="b-block mcf-duplicates" :class="{ 'b-block--hidden': !state }">
