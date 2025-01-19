@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MAL • Links to Shikimori
 // @namespace    https://github.com/grin3671/userscript/
-// @version      1.3
+// @version      1.4
 // @description  Provide links to Shikimori mirror pages.
 // @author       grin3671
 // @match        https://myanimelist.net/*
@@ -15,24 +15,31 @@
   'use strict';
 
   // Initial data
-  let supportedCategories = ['anime', 'manga', 'character', 'people'];
-  let shikimoriCategories = ['animes', 'mangas', 'characters', 'people']
+  const supportedCategories = ['anime', 'manga', 'character', 'people'];
+  const shikimoriCategories = ['animes', 'mangas', 'characters', 'people']
 
-  const createShikimoriLink = (href, index) => {
+  const createShikimoriLink = (category, id) => {
     let a = document.createElement('a');
     let i = document.createElement('i');
     i.className = 'fa-solid fa-external-link-square mr4';
     a.append(i, 'Shikimori');
     a.style.marginLeft = '10px';
-    a.href = 'https://shikimori.one/' + shikimoriCategories[index] + '/' + href[1] + '?utm_source=mal_external';
+    a.href = 'https://shikimori.one/' + category + '/' + id + '?utm_source=mal_external';
     return a;
   };
 
-  let currentURL = location.pathname.substring(1).split('/');
-  let currentCAT = supportedCategories.indexOf(currentURL[0]);
-  if ( currentCAT >= 0 ) {
-    let header = document.querySelector('.header-right');
+  const isPHP = location.pathname.substring(location.pathname.length - 4) == '.php';
+  const divider = isPHP ? '.php' : '/';
+
+  const currentURL = location.pathname.substring(1).split(divider);
+  const categoryIndex = supportedCategories.indexOf(currentURL[0]);
+
+  const id = isPHP ? new URLSearchParams(location.search).get('id') : currentURL[1];
+
+  if ( categoryIndex >= 0 ) {
+    const header = document.querySelector('.header-right');
     if (!header) return;
-    header.append(createShikimoriLink(currentURL, currentCAT));
+    header.append(createShikimoriLink(shikimoriCategories[categoryIndex], id));
   }
+
 })();
